@@ -230,10 +230,12 @@
     import { supabase } from './src/supabase.js';
 
     // Check if already logged in
-    const { data: { session } } = await supabase.auth.getSession();
-    if (session) {
-      window.location.href = '/';
-    }
+    (async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session) {
+        window.location.href = '/';
+      }
+    })();
 
     function showForm(form) {
       document.querySelectorAll('.login-tab').forEach(t => t.classList.remove('active'));

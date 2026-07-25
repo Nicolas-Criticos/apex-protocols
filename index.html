@@ -368,8 +368,14 @@
 import { supabase } from "./src/supabase.js";
 
 // ── Auth Guard ──
-const { data: { session } } = await supabase.auth.getSession();
-if (!session) { window.location.href = "/login.html"; }
+let session;
+(async () => {
+  const { data } = await supabase.auth.getSession();
+  session = data.session;
+  if (!session) { window.location.href = "/login.html"; return; }
+  // Load saved metrics after auth confirmed
+  loadMetrics();
+})();
 
 // ── Load saved metrics on page load ──
 async function loadMetrics() {
@@ -716,8 +722,6 @@ window.calcMacros = _wrappedCalcMacros;
 // Replace onclick
 document.querySelector('.fp-calc-btn').onclick = _wrappedCalcMacros;
 
-// Load saved metrics
-loadMetrics();
 </script>
 </body>
 </html>
