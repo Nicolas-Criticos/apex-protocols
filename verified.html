@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0e0e0e">
+  <title>Email Verified — Apex Protocols</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700;900&family=Barlow+Condensed:wght@700;900&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      background: #0e0e0e;
+      font-family: 'Barlow', sans-serif;
+      color: #e0e0e0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .verified-wrap {
+      background: #1a1a1a;
+      width: 100%;
+      max-width: 420px;
+      margin: 1rem;
+      border-radius: 12px;
+      box-shadow: 0 0 60px rgba(0,0,0,0.6);
+      overflow: hidden;
+      text-align: center;
+    }
+    .verified-header {
+      padding: 3rem 2rem 1.5rem;
+      border-bottom: 3px solid #cc2222;
+      background: linear-gradient(180deg, #111 0%, #1a1a1a 100%);
+    }
+    .verified-icon {
+      font-size: 64px;
+      color: #cc2222;
+      margin-bottom: 1.25rem;
+    }
+    .verified-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 28px;
+      font-weight: 900;
+      color: #ff3b3b;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 0.5rem;
+    }
+    .verified-sub {
+      font-size: 14px;
+      color: #999;
+      line-height: 1.6;
+    }
+    .verified-body {
+      padding: 2rem;
+    }
+    .verified-message {
+      font-size: 15px;
+      color: #ccc;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+    .verified-btn {
+      display: inline-block;
+      background: #cc2222;
+      border: none;
+      color: #fff;
+      font-family: 'Barlow', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 14px 32px;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+    .verified-btn:hover { background: #e02525; }
+    .verified-footer {
+      padding: 1.25rem 2rem;
+      border-top: 1px solid #2a2a2a;
+    }
+    .verified-footer-text {
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+  <div class="verified-wrap">
+    <div class="verified-header">
+      <div class="verified-icon"><i class="ti ti-circle-check"></i></div>
+      <div class="verified-title">You're In</div>
+      <div class="verified-sub">Email successfully verified</div>
+    </div>
+    <div class="verified-body">
+      <p class="verified-message">
+        Welcome to <strong style="color:#cc2222">APEX Protocol</strong>. Your account is confirmed and ready.
+        Sign in to access your training program, macro calculator, and personalised nutrition targets.
+      </p>
+      <a href="/login.html" class="verified-btn">Sign In & Start Training</a>
+    </div>
+    <div class="verified-footer">
+      <div class="verified-footer-text">The Foundation Protocol</div>
+    </div>
+  </div>
+</body>
+</html>

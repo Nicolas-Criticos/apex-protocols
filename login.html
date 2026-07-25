@@ -304,7 +304,13 @@
       btn.disabled = true;
       btn.textContent = 'Creating account...';
 
-      const { error } = await supabase.auth.signUp({ email, password });
+      const { error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          emailRedirectTo: window.location.origin + '/verified.html'
+        }
+      });
       if (error) {
         errEl.textContent = error.message;
         errEl.classList.add('visible');

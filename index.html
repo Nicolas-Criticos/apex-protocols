@@ -709,18 +709,19 @@ function calcMacros() {
     document.getElementById('pct-protein').textContent = pPct + '%';
     document.getElementById('pct-carbs').textContent   = cPct + '%';
     document.getElementById('pct-fats').textContent    = fPct + '%';
-    reportHeight();
   }, 50);
 }
 
-showWeek(1, document.querySelector('.fp-tab'));
+// ── Expose functions to window for inline onclick handlers ──
+window.showPanel = showPanel;
+window.showWeek = showWeek;
+window.calcMacros = function() { calcMacros(); saveMetrics(); };
 
-// Override calcMacros to also save
-const _origCalcMacros = window.calcMacros || calcMacros;
-const _wrappedCalcMacros = function() { _origCalcMacros(); saveMetrics(); };
-window.calcMacros = _wrappedCalcMacros;
-// Replace onclick
-document.querySelector('.fp-calc-btn').onclick = _wrappedCalcMacros;
+// Replace the onclick on the calc button too
+document.querySelector('.fp-calc-btn').onclick = window.calcMacros;
+
+// Init week 1
+showWeek(1, document.querySelector('.fp-tab'));
 
 </script>
 </body>
