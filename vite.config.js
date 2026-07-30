@@ -11,7 +11,8 @@ export default defineConfig({
         verified: 'verified.html',
         strength: 'strength.html',
         endurance: 'endurance.html',
-        functional: 'functional.html'
+        functional: 'functional.html',
+        hybrid: 'hybrid.html'
       }
     }
   }

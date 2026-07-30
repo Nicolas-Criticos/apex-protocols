@@ -4,6 +4,7 @@
     { "source": "/verified", "destination": "/verified.html" },
     { "source": "/strength",  "destination": "/strength.html" },
     { "source": "/endurance",  "destination": "/endurance.html" },
-    { "source": "/functional", "destination": "/functional.html" }
+    { "source": "/functional", "destination": "/functional.html" },
+    { "source": "/hybrid",     "destination": "/hybrid.html" }
   ]
 }
