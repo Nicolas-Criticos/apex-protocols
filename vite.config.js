@@ -12,7 +12,8 @@ export default defineConfig({
         strength: 'strength.html',
         endurance: 'endurance.html',
         functional: 'functional.html',
-        hybrid: 'hybrid.html'
+        hybrid: 'hybrid.html',
+        mobility: 'mobility.html'
       }
     }
   }
