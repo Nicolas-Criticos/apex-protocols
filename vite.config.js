@@ -8,7 +8,8 @@ export default defineConfig({
       input: {
         main: 'index.html',
         login: 'login.html',
-        verified: 'verified.html'
+        verified: 'verified.html',
+        strength: 'strength.html'
       }
     }
   }

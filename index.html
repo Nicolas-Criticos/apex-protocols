@@ -1,728 +1,318 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#0e0e0e">
-<meta name="mobile-web-app-capable" content="yes">
-<title>The Foundation Protocol — Apex Protocols</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700;900&family=Barlow+Condensed:wght@700;900&display=swap" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" rel="stylesheet">
-<style>
-  /* ── Reset & Base ── */
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body {
-    background: #0e0e0e;
-    font-family: 'Barlow', sans-serif;
-    color: #e0e0e0;
-    overflow-x: hidden;
-    -webkit-text-size-adjust: 100%;
-    -webkit-tap-highlight-color: transparent;
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0e0e0e">
+  <meta name="mobile-web-app-capable" content="yes">
+  <title>Choose Protocol — Apex Protocols</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700;900&family=Barlow+Condensed:wght@700;900&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      background: #0e0e0e;
+      font-family: 'Barlow', sans-serif;
+      color: #e0e0e0;
+      min-height: 100vh;
+    }
 
-  /* ── Wrapper ── */
-  .fp-wrap {
-    background: #1a1a1a;
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-    box-shadow: 0 0 40px rgba(0,0,0,0.6);
-  }
+    .ps-wrap {
+      background: #1a1a1a;
+      width: 100%;
+      max-width: 520px;
+      margin: 0 auto;
+      min-height: 100vh;
+      box-shadow: 0 0 60px rgba(0,0,0,0.6);
+      display: flex;
+      flex-direction: column;
+    }
 
-  /* ── Header ── */
-  .fp-header {
-    aspect-ratio: 1 / 1;
-    display: flex; flex-direction: column; justify-content: flex-start;
-    background: #111 url('/images/bg-0.jpeg') top center / cover no-repeat;
-    border-bottom: 3px solid #cc2222;
-    padding: 1.75rem 2rem;
-    text-align: center;
-    position: relative;
-  }
-  .fp-header::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.25) 20%, rgba(0,0,0,0) 38%, rgba(0,0,0,0) 78%, rgba(0,0,0,0.4) 100%);
-  }
-  .fp-header > * { position: relative; z-index: 1; }
-  .fp-title { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(30px, 6.5vw, 58px); font-weight: 900; color: #ff3b3b; line-height: 1.05; text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 2px 18px rgba(0,0,0,0.95), 0 1px 4px rgba(0,0,0,1), 0 0 34px rgba(0,0,0,0.85); }
-  .fp-divider { width: 60px; height: 2px; background: #cc2222; margin: 1rem auto 0; }
+    /* ── Header ── */
+    .ps-header {
+      padding: 2.5rem 2rem 2rem;
+      text-align: center;
+      background: linear-gradient(180deg, #111 0%, #1a1a1a 100%);
+      border-bottom: 3px solid #cc2222;
+    }
+    .ps-brand {
+      font-size: 9px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: #555;
+      margin-bottom: 0.75rem;
+    }
+    .ps-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 36px;
+      font-weight: 900;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      line-height: 1;
+    }
+    .ps-title span { color: #cc2222; }
+    .ps-subtitle {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #666;
+      margin-top: 0.75rem;
+    }
+    .ps-user-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 2rem;
+      background: #111;
+      border-bottom: 1px solid #2a2a2a;
+    }
+    .ps-user-email {
+      font-size: 10px;
+      letter-spacing: 1px;
+      color: #555;
+    }
+    .ps-logout-btn {
+      background: transparent;
+      border: 1px solid #333;
+      color: #555;
+      font-family: 'Barlow', sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .ps-logout-btn:hover { border-color: #cc2222; color: #cc2222; }
 
-  /* ── Pillars ── */
-  .fp-pillars {
-    display: grid; grid-template-columns: repeat(4, 1fr);
-    border-bottom: 1px solid #2a2a2a;
-    position: relative;
-  }
-  .fp-pillars::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: url('/images/bg-1.jpeg') center 30% / cover no-repeat;
-    opacity: 0.18;
-  }
-  .fp-pillar {
-    padding: 1.25rem 1rem; text-align: center;
-    border-right: 1px solid #2a2a2a;
-    background: rgba(22,22,22,0.78);
-    position: relative; z-index: 1;
-  }
-  .fp-pillar:last-child { border-right: none; }
-  .fp-pillar-icon { font-size: 24px; color: #cc2222; margin-bottom: 6px; }
-  .fp-pillar-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #ccc; }
+    /* ── Protocol List ── */
+    .ps-body {
+      flex: 1;
+      padding: 2rem 1.5rem;
+    }
+    .ps-section-label {
+      font-size: 9px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #444;
+      margin-bottom: 1rem;
+    }
+    .ps-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .ps-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: #111;
+      border: 1px solid #2a2a2a;
+      border-radius: 8px;
+      padding: 1.1rem 1.25rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.15s, transform 0.1s;
+      position: relative;
+      overflow: hidden;
+    }
+    .ps-card:hover:not(.disabled) {
+      border-color: #cc2222;
+      background: #161616;
+      transform: translateX(2px);
+    }
+    .ps-card:active:not(.disabled) { transform: translateX(4px); }
+    .ps-card.disabled {
+      opacity: 0.4;
+      cursor: default;
+      pointer-events: none;
+    }
+    .ps-card-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 28px;
+      font-weight: 900;
+      color: #2a2a2a;
+      min-width: 36px;
+      text-align: center;
+      line-height: 1;
+    }
+    .ps-card:hover:not(.disabled) .ps-card-num { color: #cc2222; }
+    .ps-card-info {
+      flex: 1;
+    }
+    .ps-card-category {
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #555;
+      margin-bottom: 3px;
+    }
+    .ps-card-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 20px;
+      font-weight: 900;
+      color: #e0e0e0;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      line-height: 1.1;
+    }
+    .ps-card-desc {
+      font-size: 11px;
+      color: #555;
+      margin-top: 2px;
+    }
+    .ps-card-arrow {
+      font-size: 18px;
+      color: #333;
+      transition: color 0.2s;
+    }
+    .ps-card:hover:not(.disabled) .ps-card-arrow { color: #cc2222; }
+    .ps-card-badge {
+      position: absolute;
+      top: 8px;
+      right: 10px;
+      font-size: 8px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #555;
+      background: #1e1e1e;
+      border: 1px solid #2a2a2a;
+      padding: 2px 8px;
+      border-radius: 10px;
+    }
+    .ps-card-badge.live {
+      color: #cc2222;
+      border-color: #cc2222;
+      background: rgba(204,34,34,0.08);
+    }
 
-  /* ── Sections ── */
-  .fp-section {
-    padding: 1.75rem 2rem; border-bottom: 1px solid #2a2a2a;
-    position: relative;
-    background: linear-gradient(rgba(17,17,17,0.85), rgba(17,17,17,0.92)), url('/images/bg-2.jpeg') center 25% / cover no-repeat;
-  }
-  .fp-section-title { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: #cc2222; margin-bottom: 0.75rem; font-weight: 700; position: relative; z-index: 1; }
-  .fp-overview { font-size: 14px; color: #ddd; line-height: 1.8; position: relative; z-index: 1; }
-
-  /* ── Nav Tabs ── */
-  .fp-nav-tabs { display: flex; background: #111; border-bottom: 1px solid #2a2a2a; }
-  .fp-nav-tab {
-    flex: 1; padding: 1rem; text-align: center;
-    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
-    color: #555; cursor: pointer; border: none; background: transparent;
-    border-bottom: 2px solid transparent;
-    font-family: 'Barlow', sans-serif; font-weight: 700;
-    transition: color 0.2s, background 0.2s;
-  }
-  .fp-nav-tab.active { color: #cc2222; border-bottom-color: #cc2222; background: #161616; }
-
-  /* ── Week Tabs ── */
-  .fp-week-tabs { display: flex; background: #161616; border-bottom: 1px solid #2a2a2a; padding: 0 2rem; gap: 4px; }
-  .fp-tab {
-    padding: 0.7rem 1.25rem; font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
-    color: #555; cursor: pointer; border: none; background: transparent;
-    border-bottom: 2px solid transparent;
-    font-family: 'Barlow', sans-serif; font-weight: 700;
-    transition: color 0.2s;
-  }
-  .fp-tab.active { color: #cc2222; border-bottom-color: #cc2222; }
-
-  /* ── Week Content ── */
-  .fp-week-content { padding: 1.75rem 2rem; }
-  .fp-week-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
-  .fp-week-badge { background: #cc2222; color: #fff; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; padding: 5px 12px; border-radius: 3px; font-weight: 700; }
-  .fp-week-focus { font-size: 13px; color: #888; letter-spacing: 1px; }
-
-  /* ── Day Cards ── */
-  .fp-days { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 1.5rem; }
-  @media (max-width: 420px) { .fp-days { grid-template-columns: 1fr; } }
-  .fp-day { background: #111; border: 1px solid #2a2a2a; border-radius: 8px; overflow: hidden; }
-  .fp-day-header { background: #1e1e1e; padding: 10px 12px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #2a2a2a; }
-  .fp-day-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #888; font-weight: 600; }
-  .fp-day-type { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #cc2222; }
-  .fp-day-rest .fp-day-type { color: #555; }
-  .fp-exercises { padding: 10px 12px; }
-  .fp-exercise { display: flex; align-items: center; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid #1e1e1e; gap: 8px; }
-  .fp-exercise:last-child { border-bottom: none; }
-  .fp-ex-name { font-size: 12px; color: #ccc; flex: 1; min-width: 0; line-height: 1.4; word-break: break-word; }
-  .fp-ex-sets { font-size: 11px; color: #888; white-space: nowrap; min-width: 52px; text-align: right; }
-  .fp-ex-link { color: #cc2222; font-size: 15px; text-decoration: none; cursor: pointer; flex-shrink: 0; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; transition: color 0.15s; }
-  .fp-ex-link:hover { color: #ff4444; }
-  .fp-rest-content { padding: 1.25rem; text-align: center; }
-  .fp-rest-icon { font-size: 28px; color: #2a2a2a; margin-bottom: 6px; }
-  .fp-rest-text { font-size: 11px; color: #555; letter-spacing: 1px; text-transform: uppercase; }
-  .fp-rest-sub { font-size: 10px; color: #3a3a3a; margin-top: 5px; }
-  .fp-coaching-note { background: #161616; border-left: 3px solid #cc2222; padding: 0.875rem 1.25rem; border-radius: 0 8px 8px 0; font-size: 13px; color: #999; font-style: italic; }
-
-  /* ── Nutrition ── */
-  .fp-nutrition { padding: 1.75rem 2rem; }
-  .fp-macro-calc { background: #111; border: 1px solid #2a2a2a; border-radius: 10px; padding: 1.5rem; margin-bottom: 1.5rem; }
-  .fp-calc-title { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #777; margin-bottom: 1.25rem; }
-  .fp-calc-inputs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 12px; }
-  @media (max-width: 600px) { .fp-calc-inputs { grid-template-columns: 1fr 1fr; } }
-  .fp-calc-field label { display: block; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: #666; margin-bottom: 5px; }
-  .fp-calc-field input, .fp-calc-field select {
-    width: 100%; background: #1a1a1a; border: 1px solid #333; border-radius: 5px;
-    color: #ccc; font-size: 13px; font-family: 'Barlow', sans-serif; padding: 8px 10px; outline: none;
-  }
-  .fp-calc-field input:focus, .fp-calc-field select:focus { border-color: #cc2222; }
-  .fp-calc-field select option { background: #1a1a1a; }
-  .fp-calc-btn {
-    width: 100%; background: #cc2222; border: none; color: #fff;
-    font-family: 'Barlow', sans-serif; font-size: 11px; font-weight: 700;
-    letter-spacing: 2px; text-transform: uppercase; padding: 11px;
-    border-radius: 5px; cursor: pointer; margin-top: 2px; transition: background 0.15s;
-  }
-  .fp-calc-btn:hover { background: #e02525; }
-  .fp-macro-results { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 1.25rem; }
-  @media (max-width: 500px) { .fp-macro-results { grid-template-columns: 1fr 1fr; } }
-  .fp-macro-card { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 8px; padding: 1rem; text-align: center; }
-  .fp-macro-card.highlight { border-color: #cc2222; }
-  .fp-macro-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: #666; margin-bottom: 6px; }
-  .fp-macro-value { font-size: 26px; font-weight: 700; color: #e0e0e0; line-height: 1; }
-  .fp-macro-value.red { color: #cc2222; }
-  .fp-macro-unit { font-size: 10px; color: #555; margin-top: 4px; }
-  .fp-macro-bar-row { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
-  .fp-macro-bar-label { font-size: 10px; color: #666; width: 64px; flex-shrink: 0; }
-  .fp-macro-bar-track { flex: 1; height: 6px; background: #222; border-radius: 3px; overflow: hidden; }
-  .fp-macro-bar-fill { height: 100%; border-radius: 3px; transition: width 0.5s ease; }
-  .fp-macro-bar-pct { font-size: 10px; color: #555; width: 32px; text-align: right; flex-shrink: 0; }
-  .fp-nutrition-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 1.5rem; }
-  @media (max-width: 600px) { .fp-nutrition-grid { grid-template-columns: 1fr; } }
-  .fp-nutrition-card { background: #111; border: 1px solid #2a2a2a; border-radius: 10px; padding: 1.25rem 1.5rem; }
-  .fp-nutrition-card-title { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #cc2222; margin-bottom: 1rem; font-weight: 700; }
-  .fp-food-list { list-style: none; }
-  .fp-food-list li { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; color: #bbb; padding: 6px 0; border-bottom: 1px solid #1e1e1e; line-height: 1.4; }
-  .fp-food-list li:last-child { border-bottom: none; }
-  .fp-food-list li i { color: #cc2222; font-size: 14px; flex-shrink: 0; margin-top: 1px; }
-  .fp-tip-list { list-style: none; }
-  .fp-tip-list li { display: flex; gap: 10px; font-size: 13px; color: #bbb; padding: 6px 0; border-bottom: 1px solid #1e1e1e; line-height: 1.6; }
-  .fp-tip-list li:last-child { border-bottom: none; }
-  .fp-tip-num { color: #cc2222; font-size: 11px; font-weight: 700; min-width: 18px; margin-top: 2px; }
-  .fp-timing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 1.5rem 0; }
-  @media (max-width: 600px) { .fp-timing-grid { grid-template-columns: 1fr; } }
-  .fp-timing-card { background: #111; border: 1px solid #2a2a2a; border-radius: 10px; padding: 1.125rem 1.25rem; text-align: center; }
-  .fp-timing-icon { font-size: 24px; color: #cc2222; margin-bottom: 8px; }
-  .fp-timing-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #666; margin-bottom: 6px; }
-  .fp-timing-text { font-size: 12px; color: #bbb; line-height: 1.6; }
-
-  /* ── Footer ── */
-  .fp-footer {
-    padding: 1.5rem 2rem; display: flex; justify-content: center; align-items: center;
-    border-top: 1px solid #2a2a2a;
-    position: relative;
-    background: linear-gradient(rgba(10,10,10,0.7), rgba(10,10,10,0.85)), url('/images/bg-2.jpeg') center 35% / cover no-repeat;
-  }
-  .fp-footer-brand { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: #ddd; position: relative; z-index: 1; }
-
-  /* ── Responsive: Tablet & Mobile ── */
-  @media (max-width: 700px) {
-    .fp-header { padding: 1.25rem 1.25rem; }
-    .fp-pillars { grid-template-columns: repeat(2, 1fr); }
-    .fp-pillar { border-right: 1px solid #2a2a2a; border-bottom: 1px solid #2a2a2a; padding: 1rem 0.75rem; }
-    .fp-pillar:nth-child(2n) { border-right: none; }
-    .fp-pillar:nth-last-child(-n+2) { border-bottom: none; }
-    .fp-section { padding: 1.5rem 1.25rem; }
-    .fp-nav-tab { padding: 0.85rem 0.5rem; font-size: 10px; letter-spacing: 1px; }
-    .fp-week-tabs { padding: 0 1.25rem; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-    .fp-week-tabs::-webkit-scrollbar { display: none; }
-    .fp-tab { padding: 0.7rem 1rem; font-size: 10px; white-space: nowrap; flex-shrink: 0; }
-    .fp-week-content { padding: 1.5rem 1.25rem; }
-    .fp-week-header { flex-wrap: wrap; gap: 0.5rem; }
-    .fp-week-focus { font-size: 12px; }
-    .fp-nutrition { padding: 1.5rem 1.25rem; }
-    .fp-macro-calc { padding: 1.25rem; }
-    .fp-timing-grid { grid-template-columns: 1fr; }
-    .fp-footer { padding: 1.25rem 1.25rem; }
-  }
-  @media (max-width: 480px) {
-    .fp-exercise { flex-wrap: wrap; }
-    .fp-ex-name { flex-basis: 100%; }
-    .fp-ex-sets { text-align: left; }
-  }
-
-  /* ── Panel visibility ── */
-  #training-panel, #nutrition-panel { display: none; }
-  #training-panel.visible, #nutrition-panel.visible { display: block; }
-</style>
+    /* ── Footer ── */
+    .ps-footer {
+      padding: 1.25rem 2rem;
+      text-align: center;
+      border-top: 1px solid #1e1e1e;
+    }
+    .ps-footer-text {
+      font-size: 9px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #333;
+    }
+  </style>
 </head>
 <body>
-<div class="fp-wrap" id="fp-wrap">
 
-  <!-- ═══ HEADER ═══ -->
-  <div class="fp-header">
-    <h1 class="fp-title">THE FOUNDATION PROTOCOL</h1>
-    <div class="fp-divider"></div>
+<div class="ps-wrap">
+
+  <div class="ps-header">
+    <div class="ps-brand">Performance Platform</div>
+    <div class="ps-title"><span>Apex</span> Protocols</div>
+    <div class="ps-subtitle">Choose your training protocol</div>
   </div>
 
-  <!-- ═══ PILLARS ═══ -->
-  <div class="fp-pillars">
-    <div class="fp-pillar"><div class="fp-pillar-icon"><i class="ti ti-barbell"></i></div><div class="fp-pillar-label">Strength</div></div>
-    <div class="fp-pillar"><div class="fp-pillar-icon"><i class="ti ti-heartbeat"></i></div><div class="fp-pillar-label">Endurance</div></div>
-    <div class="fp-pillar"><div class="fp-pillar-icon"><i class="ti ti-brain"></i></div><div class="fp-pillar-label">Mindset</div></div>
-    <div class="fp-pillar"><div class="fp-pillar-icon"><i class="ti ti-yoga"></i></div><div class="fp-pillar-label">Mobility</div></div>
+  <div class="ps-user-bar">
+    <span class="ps-user-email" id="user-email">Loading...</span>
+    <button class="ps-logout-btn" onclick="handleLogout()">Sign Out</button>
   </div>
 
-  <!-- ═══ OVERVIEW ═══ -->
-  <div class="fp-section">
-    <div class="fp-section-title">Program Overview</div>
-    <p class="fp-overview">An ongoing strength program built around the Push / Pull / Legs split. Training progressively overloads week over week, adding reps, weight, or intensity as you adapt. All training is performed with free weights and kettlebells only. Rest days are active recovery: mobility work, breathwork, or a 20-min walk. This is your foundation. Everything that follows is built on it.</p>
-  </div>
+  <div class="ps-body">
+    <div class="ps-section-label">Available Protocols</div>
+    <div class="ps-cards">
 
-  <!-- ═══ NAV TABS ═══ -->
-  <div class="fp-nav-tabs">
-    <button class="fp-nav-tab active" onclick="showPanel('training', this)">TRAINING PROGRAM</button>
-    <button class="fp-nav-tab" onclick="showPanel('nutrition', this)">NUTRITION &amp; MACROS</button>
-  </div>
-
-  <!-- ═══ TRAINING PANEL ═══ -->
-  <div id="training-panel" class="visible">
-    <div class="fp-week-tabs">
-      <button class="fp-tab active" onclick="showWeek(1, this)">WEEK 1</button>
-      <button class="fp-tab" onclick="showWeek(2, this)">WEEK 2</button>
-      <button class="fp-tab" onclick="showWeek(3, this)">WEEK 3</button>
-      <button class="fp-tab" onclick="showWeek(4, this)">WEEK 4</button>
-    </div>
-    <div class="fp-week-content" id="week-content"></div>
-  </div>
-
-  <!-- ═══ NUTRITION PANEL ═══ -->
-  <div id="nutrition-panel">
-    <div class="fp-nutrition">
-      <div class="fp-section-title">Macro Calculator</div>
-      <div class="fp-macro-calc">
-        <div class="fp-calc-title">Enter your details to get your personalised daily targets</div>
-        <div class="fp-calc-inputs">
-          <div class="fp-calc-field"><label>Weight (kg)</label><input type="number" id="calc-weight" placeholder="e.g. 85" min="40" max="200"></div>
-          <div class="fp-calc-field"><label>Height (cm)</label><input type="number" id="calc-height" placeholder="e.g. 178" min="140" max="220"></div>
-          <div class="fp-calc-field"><label>Age</label><input type="number" id="calc-age" placeholder="e.g. 30" min="16" max="70"></div>
-          <div class="fp-calc-field"><label>Activity Level</label>
-            <select id="calc-activity">
-              <option value="1.375">Light (1-2 days/week)</option>
-              <option value="1.55" selected>Moderate (3-4 days/week)</option>
-              <option value="1.725">Active (5+ days/week)</option>
-            </select>
-          </div>
-          <div class="fp-calc-field"><label>Goal</label>
-            <select id="calc-goal">
-              <option value="cut">Lose Fat &amp; Build Strength</option>
-              <option value="maintain">Maintain &amp; Recomp</option>
-              <option value="bulk">Build Muscle (Lean Bulk)</option>
-            </select>
-          </div>
-          <div class="fp-calc-field" style="display:flex;align-items:flex-end;">
-            <button class="fp-calc-btn" onclick="calcMacros()">Calculate My Targets</button>
-          </div>
+      <!-- Protocol 1 — Strength -->
+      <a href="/strength" class="ps-card">
+        <div class="ps-card-num">01</div>
+        <div class="ps-card-info">
+          <div class="ps-card-category">Strength</div>
+          <div class="ps-card-name">The Foundation Protocol</div>
+          <div class="ps-card-desc">Core strength · Progressive overload · Compound lifts</div>
         </div>
-        <div class="fp-macro-results" id="macro-results" style="display:none">
-          <div class="fp-macro-card highlight"><div class="fp-macro-label">Daily Calories</div><div class="fp-macro-value red" id="res-kcal">-</div><div class="fp-macro-unit">kcal / day</div></div>
-          <div class="fp-macro-card"><div class="fp-macro-label">Protein</div><div class="fp-macro-value" id="res-protein">-</div><div class="fp-macro-unit">grams / day</div></div>
-          <div class="fp-macro-card"><div class="fp-macro-label">Carbs</div><div class="fp-macro-value" id="res-carbs">-</div><div class="fp-macro-unit">grams / day</div></div>
-          <div class="fp-macro-card"><div class="fp-macro-label">Fats</div><div class="fp-macro-value" id="res-fats">-</div><div class="fp-macro-unit">grams / day</div></div>
+        <i class="ti ti-chevron-right ps-card-arrow"></i>
+        <div class="ps-card-badge live">Live</div>
+      </a>
+
+      <!-- Protocol 2 — Coming Soon -->
+      <div class="ps-card disabled">
+        <div class="ps-card-num">02</div>
+        <div class="ps-card-info">
+          <div class="ps-card-category">Coming Soon</div>
+          <div class="ps-card-name">Protocol 2</div>
+          <div class="ps-card-desc">—</div>
         </div>
-        <div id="macro-bars" style="display:none; margin-top:14px; background:#1a1a1a; border-radius:8px; padding:12px 16px;">
-          <div class="fp-macro-bar-row"><span class="fp-macro-bar-label">Protein</span><div class="fp-macro-bar-track"><div class="fp-macro-bar-fill" id="bar-protein" style="background:#cc2222;width:0%"></div></div><span class="fp-macro-bar-pct" id="pct-protein">0%</span></div>
-          <div class="fp-macro-bar-row"><span class="fp-macro-bar-label">Carbs</span><div class="fp-macro-bar-track"><div class="fp-macro-bar-fill" id="bar-carbs" style="background:#888;width:0%"></div></div><span class="fp-macro-bar-pct" id="pct-carbs">0%</span></div>
-          <div class="fp-macro-bar-row"><span class="fp-macro-bar-label">Fats</span><div class="fp-macro-bar-track"><div class="fp-macro-bar-fill" id="bar-fats" style="background:#555;width:0%"></div></div><span class="fp-macro-bar-pct" id="pct-fats">0%</span></div>
-        </div>
+        <i class="ti ti-lock ps-card-arrow"></i>
+        <div class="ps-card-badge">Soon</div>
       </div>
 
-      <div class="fp-section-title">Meal Timing</div>
-      <div class="fp-timing-grid">
-        <div class="fp-timing-card"><div class="fp-timing-icon"><i class="ti ti-sunrise"></i></div><div class="fp-timing-label">Pre-Workout</div><div class="fp-timing-text">Carbs + protein 60-90 min before training. Rice, oats, chicken, egg whites.</div></div>
-        <div class="fp-timing-card"><div class="fp-timing-icon"><i class="ti ti-bolt"></i></div><div class="fp-timing-label">Post-Workout</div><div class="fp-timing-text">Protein + fast carbs within 45 min. Whey shake, banana, white rice.</div></div>
-        <div class="fp-timing-card"><div class="fp-timing-icon"><i class="ti ti-moon"></i></div><div class="fp-timing-label">Before Bed</div><div class="fp-timing-text">Slow protein to fuel overnight recovery. Cottage cheese, casein, Greek yogurt.</div></div>
+      <!-- Protocol 3 — Coming Soon -->
+      <div class="ps-card disabled">
+        <div class="ps-card-num">03</div>
+        <div class="ps-card-info">
+          <div class="ps-card-category">Coming Soon</div>
+          <div class="ps-card-name">Protocol 3</div>
+          <div class="ps-card-desc">—</div>
+        </div>
+        <i class="ti ti-lock ps-card-arrow"></i>
+        <div class="ps-card-badge">Soon</div>
       </div>
 
-      <div class="fp-nutrition-grid">
-        <div class="fp-nutrition-card">
-          <div class="fp-nutrition-card-title">Top Protein Sources</div>
-          <ul class="fp-food-list">
-            <li><i class="ti ti-check"></i>Chicken breast - lean, versatile</li>
-            <li><i class="ti ti-check"></i>Eggs &amp; egg whites</li>
-            <li><i class="ti ti-check"></i>Whey protein isolate</li>
-            <li><i class="ti ti-check"></i>Lean beef mince (90%+)</li>
-            <li><i class="ti ti-check"></i>Tuna &amp; white fish</li>
-            <li><i class="ti ti-check"></i>Greek yogurt (plain)</li>
-          </ul>
+      <!-- Protocol 4 — Coming Soon -->
+      <div class="ps-card disabled">
+        <div class="ps-card-num">04</div>
+        <div class="ps-card-info">
+          <div class="ps-card-category">Coming Soon</div>
+          <div class="ps-card-name">Protocol 4</div>
+          <div class="ps-card-desc">—</div>
         </div>
-        <div class="fp-nutrition-card">
-          <div class="fp-nutrition-card-title">Quality Carb Sources</div>
-          <ul class="fp-food-list">
-            <li><i class="ti ti-check"></i>White &amp; brown rice</li>
-            <li><i class="ti ti-check"></i>Oats - slow-release energy</li>
-            <li><i class="ti ti-check"></i>Sweet potato</li>
-            <li><i class="ti ti-check"></i>Banana - pre/post workout</li>
-            <li><i class="ti ti-check"></i>Wholegrain bread</li>
-            <li><i class="ti ti-check"></i>Fruit - apple, berries, mango</li>
-          </ul>
-        </div>
-        <div class="fp-nutrition-card">
-          <div class="fp-nutrition-card-title">Healthy Fat Sources</div>
-          <ul class="fp-food-list">
-            <li><i class="ti ti-check"></i>Avocado</li>
-            <li><i class="ti ti-check"></i>Olive oil - cooking &amp; dressing</li>
-            <li><i class="ti ti-check"></i>Nuts - almonds, walnuts</li>
-            <li><i class="ti ti-check"></i>Salmon &amp; fatty fish</li>
-            <li><i class="ti ti-check"></i>Nut butter (natural)</li>
-          </ul>
-        </div>
-        <div class="fp-nutrition-card">
-          <div class="fp-nutrition-card-title">Coach's Nutrition Rules</div>
-          <ul class="fp-tip-list">
-            <li><span class="fp-tip-num">01</span>Hit your protein target every single day - non-negotiable.</li>
-            <li><span class="fp-tip-num">02</span>Drink 3-4L of water. Most cravings are dehydration in disguise.</li>
-            <li><span class="fp-tip-num">03</span>Don't fear carbs on training days - they fuel your lifts.</li>
-            <li><span class="fp-tip-num">04</span>Reduce carbs on rest days, keep protein the same.</li>
-            <li><span class="fp-tip-num">05</span>Sleep 7-9 hours. No supplement beats sleep for recovery.</li>
-          </ul>
-        </div>
+        <i class="ti ti-lock ps-card-arrow"></i>
+        <div class="ps-card-badge">Soon</div>
       </div>
+
+      <!-- Protocol 5 — Coming Soon -->
+      <div class="ps-card disabled">
+        <div class="ps-card-num">05</div>
+        <div class="ps-card-info">
+          <div class="ps-card-category">Coming Soon</div>
+          <div class="ps-card-name">Protocol 5</div>
+          <div class="ps-card-desc">—</div>
+        </div>
+        <i class="ti ti-lock ps-card-arrow"></i>
+        <div class="ps-card-badge">Soon</div>
+      </div>
+
     </div>
   </div>
 
-  <!-- ═══ FOOTER ═══ -->
-  <div class="fp-footer">
-    <div class="fp-footer-brand">Apex Protocols &nbsp;&middot;&nbsp; Foundation Protocol</div>
-    <button onclick="handleLogout()" style="background:transparent;border:1px solid #333;color:#666;font-family:Barlow,sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:8px 16px;border-radius:4px;cursor:pointer;margin-left:1rem;transition:all 0.2s" onmouseover="this.style.borderColor='#cc2222';this.style.color='#cc2222'" onmouseout="this.style.borderColor='#333';this.style.color='#666'">Logout</button>
+  <div class="ps-footer">
+    <div class="ps-footer-text">Apex Protocols &nbsp;·&nbsp; Performance Platform</div>
   </div>
 
 </div>
 
 <script type="module">
-import { supabase } from "./src/supabase.js";
+import { supabase } from './src/supabase.js';
 
 // ── Auth Guard ──
-let session;
 (async () => {
   const { data } = await supabase.auth.getSession();
-  session = data.session;
-  if (!session) { window.location.href = "/login.html"; return; }
-  // Load saved metrics after auth confirmed
-  loadMetrics();
+  if (!data.session) {
+    window.location.href = '/login.html';
+    return;
+  }
+  // Show user email
+  const emailEl = document.getElementById('user-email');
+  if (emailEl) emailEl.textContent = data.session.user.email;
 })();
 
-// ── Load saved metrics on page load ──
-async function loadMetrics() {
-  const { data } = await supabase
-    .from("user_metrics")
-    .select("*")
-    .eq("user_id", session.user.id)
-    .single();
-  if (data) {
-    if (data.weight_kg) document.getElementById("calc-weight").value = data.weight_kg;
-    if (data.height_cm) document.getElementById("calc-height").value = data.height_cm;
-    if (data.age) document.getElementById("calc-age").value = data.age;
-    if (data.activity_level) document.getElementById("calc-activity").value = data.activity_level;
-    if (data.goal) document.getElementById("calc-goal").value = data.goal;
-    // Auto-calculate if all fields present
-    if (data.weight_kg && data.height_cm && data.age) calcMacros();
-  }
-}
-
-// ── Save metrics to Supabase ──
-async function saveMetrics() {
-  const weight = parseFloat(document.getElementById("calc-weight").value);
-  const height = parseFloat(document.getElementById("calc-height").value);
-  const age = parseFloat(document.getElementById("calc-age").value);
-  const activity = parseFloat(document.getElementById("calc-activity").value);
-  const goal = document.getElementById("calc-goal").value;
-  if (!weight || !height || !age) return;
-
-  const { data: existing } = await supabase
-    .from("user_metrics")
-    .select("id")
-    .eq("user_id", session.user.id)
-    .single();
-
-  const payload = {
-    user_id: session.user.id,
-    weight_kg: weight,
-    height_cm: height,
-    age: age,
-    activity_level: activity,
-    goal: goal,
-    updated_at: new Date().toISOString()
-  };
-
-  if (existing) {
-    await supabase.from("user_metrics").update(payload).eq("user_id", session.user.id);
-  } else {
-    await supabase.from("user_metrics").insert(payload);
-  }
-}
-
-// ── Logout handler ──
+// ── Logout ──
 async function handleLogout() {
   await supabase.auth.signOut();
-  window.location.href = "/login.html";
+  window.location.href = '/login.html';
 }
 window.handleLogout = handleLogout;
-
-const videoLinks = {
-  "Barbell Bench Press": "https://youtu.be/CjHIKDQ4RQo?si=iVbMugzKOG57qyxb",
-  "DB Seated Shoulder Press": "https://www.youtube.com/results?search_query=DB+Seated+Shoulder+Press+form",
-  "DB Incline Bench Press": "https://youtu.be/jMQA3XtJSgo?si=DR5eCudi9-nIgRVq",
-  "DB Lateral Raise": "https://www.youtube.com/results?search_query=DB+Lateral+Raise+form",
-  "KB Floor Press": "https://www.youtube.com/results?search_query=KB+Floor+Press+form",
-  "Barbell Deadlift": "https://youtu.be/yPqv3ejnZvc?si=g5S2sQoHF1Ib5a6K",
-  "DB Chest-Supported Row": "https://www.youtube.com/results?search_query=DB+Chest-Supported+Row+form",
-  "KB Single-Arm Row": "https://youtu.be/9Q9gwoXHn1o?si=UaZDhRwrCxAC0Ew8",
-  "DB Hammer Curl": "https://youtu.be/CFBZ4jN1CMI?si=wLcIC82QZo1C_1JH",
-  "Barbell Curl": "https://youtube.com/shorts/N6paU6TGFWU?si=-AgrbZ2RH3Xjuku4",
-  "Barbell Front Squat": "https://www.youtube.com/results?search_query=Barbell+Front+Squat+form",
-  "DB Romanian Deadlift": "https://www.youtube.com/results?search_query=DB+Romanian+Deadlift+form",
-  "KB Goblet Squat": "https://youtu.be/f-Vf2yRRqOg?si=SobT2fcFbx3sTMdZ",
-  "DB Walking Lunge": "https://youtu.be/eFWCn5iEbTU?si=AzHGP03G5EpWXmts",
-  "KB Swing": "https://youtube.com/shorts/TIy6s4O2bOY?si=JhpzJ9Wm4FCFA0uv",
-  "Barbell Overhead Press (standing)": "https://www.youtube.com/results?search_query=Barbell+Overhead+Press+form",
-  "DB Bench Press (flat)": "https://www.youtube.com/results?search_query=DB+Bench+Press+flat+form",
-  "DB Arnold Press": "https://www.youtube.com/results?search_query=DB+Arnold+Press+form",
-  "KB Push Press": "https://www.youtube.com/results?search_query=KB+Push+Press+form",
-  "DB Overhead Triceps Extension": "https://www.youtube.com/results?search_query=DB+Overhead+Triceps+Extension+form",
-  "Barbell Bent-Over Row": "https://youtu.be/bm0_q9bR_HA?si=OdetbX82pJxSCk0Z",
-  "DB Renegade Row": "https://www.youtube.com/results?search_query=DB+Renegade+Row+form",
-  "KB High Pull": "https://www.youtube.com/results?search_query=KB+High+Pull+form",
-  "DB Reverse Curl": "https://youtu.be/hUA-fIpM7nA?si=kbM6zxGPpvzIAFoA",
-  "DB Concentration Curl": "https://www.youtube.com/results?search_query=DB+Concentration+Curl+form",
-  "Barbell Back Squat": "https://youtu.be/-bJIpOq-LWk?si=G7BZr-dHPfOQtH1r",
-  "Barbell Romanian Deadlift": "https://youtube.com/shorts/g5u75sgpn04?si=OpAbSmmw4MeintA1",
-  "DB Bulgarian Split Squat": "https://youtu.be/Fmjj7wFJWRE?si=fw9qfEO9sapIvnfB",
-  "KB Sumo Squat": "https://www.youtube.com/results?search_query=KB+Sumo+Squat+form",
-  "DB Step-Up": "https://www.youtube.com/results?search_query=DB+Step-Up+form",
-  "Barbell Incline Bench Press": "https://www.youtube.com/results?search_query=Barbell+Incline+Bench+Press+form",
-  "DB Floor Press": "https://youtu.be/tXv-rEa5xn8?si=nbWMMBHibeUSg9Gy",
-  "KB Alternating Floor Press": "https://www.youtube.com/results?search_query=KB+Alternating+Floor+Press+form",
-  "DB Skull Crusher": "https://www.youtube.com/results?search_query=DB+Skull+Crusher+form",
-  "DB Front Raise": "https://www.youtube.com/results?search_query=DB+Front+Raise+form",
-  "Barbell Pendlay Row": "https://www.youtube.com/results?search_query=Barbell+Pendlay+Row+form",
-  "DB Single-Arm Row": "https://www.youtube.com/results?search_query=DB+Single-Arm+Row+form",
-  "KB Gorilla Row": "https://www.youtube.com/results?search_query=KB+Gorilla+Row+form",
-  "DB Zottman Curl": "https://www.youtube.com/results?search_query=DB+Zottman+Curl+form",
-  "DB Pullover": "https://www.youtube.com/results?search_query=DB+Pullover+form",
-  "Barbell Box Squat": "https://www.youtube.com/results?search_query=Barbell+Box+Squat+form",
-  "DB Single-Leg RDL": "https://www.youtube.com/results?search_query=DB+Single-Leg+RDL+form",
-  "KB Front Squat": "https://www.youtube.com/results?search_query=KB+Front+Squat+form",
-  "DB Reverse Lunge": "https://www.youtube.com/results?search_query=DB+Reverse+Lunge+form",
-  "KB Single-Arm Swing": "https://www.youtube.com/results?search_query=KB+Single-Arm+Swing+form",
-  "Barbell Push Press": "https://www.youtube.com/results?search_query=Barbell+Push+Press+form",
-  "DB Decline Bench Press": "https://www.youtube.com/results?search_query=DB+Decline+Bench+Press+form",
-  "DB Close-Grip Floor Press": "https://www.youtube.com/results?search_query=DB+Close-Grip+Floor+Press+form",
-  "KB Bottoms-Up Press": "https://www.youtube.com/results?search_query=KB+Bottoms-Up+Press+form",
-  "DB Tate Press": "https://www.youtube.com/results?search_query=DB+Tate+Press+form",
-  "Barbell Sumo Deadlift": "https://www.youtube.com/results?search_query=Barbell+Sumo+Deadlift+form",
-  "Barbell Rack Pull": "https://www.youtube.com/results?search_query=Barbell+Rack+Pull+form",
-  "DB Kroc Row": "https://www.youtube.com/results?search_query=DB+Kroc+Row+form",
-  "KB Renegade Row": "https://www.youtube.com/results?search_query=KB+Renegade+Row+form",
-  "DB Incline Curl": "https://www.youtube.com/results?search_query=DB+Incline+Curl+form",
-  "Barbell Zercher Squat": "https://www.youtube.com/results?search_query=Barbell+Zercher+Squat+form",
-  "DB Stiff-Leg Deadlift": "https://www.youtube.com/results?search_query=DB+Stiff-Leg+Deadlift+form",
-  "KB Single-Leg RDL": "https://youtube.com/shorts/s32cCgmRV3I?si=P73Sudm6G9sOKZVR",
-  "DB Deficit Reverse Lunge": "https://www.youtube.com/results?search_query=DB+Deficit+Reverse+Lunge+form",
-  "KB Snatch": "https://www.youtube.com/results?search_query=KB+Snatch+form"
-};
-
-function getLink(name) {
-  return videoLinks[name] || ('https://www.youtube.com/results?search_query=' + encodeURIComponent(name + ' exercise tutorial'));
-}
-
-const weeks = {
-  1: {
-    focus: "Establish Movement Patterns - Learn the lifts",
-    note: "Focus on form over weight. Every rep is a rep banked in the nervous system. 3-5 reps per set means every rep counts - move deliberately.",
-    days: [
-      { label:"Day 1", type:"Push", rest:false, exercises:[
-        {name:"Barbell Bench Press", sets:"4 x 5"},
-        {name:"DB Seated Shoulder Press", sets:"3 x 5"},
-        {name:"DB Incline Bench Press", sets:"3 x 5"},
-        {name:"DB Lateral Raise", sets:"3 x 5"},
-        {name:"KB Floor Press", sets:"3 x 5"}
-      ]},
-      { label:"Day 2", type:"Pull", rest:false, exercises:[
-        {name:"Barbell Deadlift", sets:"4 x 5"},
-        {name:"DB Chest-Supported Row", sets:"3 x 5"},
-        {name:"KB Single-Arm Row", sets:"3 x 5ea"},
-        {name:"DB Hammer Curl", sets:"3 x 5"},
-        {name:"Barbell Curl", sets:"3 x 5"}
-      ]},
-      { label:"Day 3", type:"Legs", rest:false, exercises:[
-        {name:"Barbell Front Squat", sets:"4 x 5"},
-        {name:"DB Romanian Deadlift", sets:"3 x 5"},
-        {name:"KB Goblet Squat", sets:"3 x 5"},
-        {name:"DB Walking Lunge", sets:"3 x 5ea"},
-        {name:"KB Swing", sets:"3 x 5"}
-      ]},
-      { label:"Day 4", type:"Rest", rest:true, exercises:[] }
-    ]
-  },
-  2: {
-    focus: "Build Volume - Add a set to each main lift",
-    note: "You've drilled the patterns. Add a set and nudge the weight up slightly on each lift. 3-5 reps per set keeps intensity high.",
-    days: [
-      { label:"Day 1", type:"Push", rest:false, exercises:[
-        {name:"Barbell Overhead Press (standing)", sets:"5 x 5"},
-        {name:"DB Bench Press (flat)", sets:"4 x 5"},
-        {name:"DB Arnold Press", sets:"4 x 5"},
-        {name:"KB Push Press", sets:"3 x 5"},
-        {name:"DB Overhead Triceps Extension", sets:"3 x 5"}
-      ]},
-      { label:"Day 2", type:"Pull", rest:false, exercises:[
-        {name:"Barbell Bent-Over Row", sets:"5 x 5"},
-        {name:"DB Renegade Row", sets:"4 x 5"},
-        {name:"KB High Pull", sets:"4 x 5"},
-        {name:"DB Reverse Curl", sets:"3 x 5"},
-        {name:"DB Concentration Curl", sets:"3 x 5"}
-      ]},
-      { label:"Day 3", type:"Legs", rest:false, exercises:[
-        {name:"Barbell Back Squat", sets:"5 x 5"},
-        {name:"Barbell Romanian Deadlift", sets:"4 x 5"},
-        {name:"DB Bulgarian Split Squat", sets:"4 x 5ea"},
-        {name:"KB Sumo Squat", sets:"3 x 5"},
-        {name:"DB Step-Up", sets:"3 x 5ea"}
-      ]},
-      { label:"Day 4", type:"Rest", rest:true, exercises:[] }
-    ]
-  },
-  3: {
-    focus: "Increase Intensity - Add load, drop to 3-4 reps",
-    note: "Push near your true working weight. Each set should feel heavy but technically clean. 1-2 reps in reserve - no grinding, no breakdown.",
-    days: [
-      { label:"Day 1", type:"Push", rest:false, exercises:[
-        {name:"Barbell Incline Bench Press", sets:"5 x 4"},
-        {name:"DB Floor Press", sets:"4 x 4"},
-        {name:"KB Alternating Floor Press", sets:"4 x 4"},
-        {name:"DB Skull Crusher", sets:"3 x 4"},
-        {name:"DB Front Raise", sets:"3 x 4"}
-      ]},
-      { label:"Day 2", type:"Pull", rest:false, exercises:[
-        {name:"Barbell Pendlay Row", sets:"5 x 4"},
-        {name:"DB Single-Arm Row", sets:"4 x 4ea"},
-        {name:"KB Gorilla Row", sets:"4 x 4ea"},
-        {name:"DB Zottman Curl", sets:"3 x 4"},
-        {name:"DB Pullover", sets:"3 x 4"}
-      ]},
-      { label:"Day 3", type:"Legs", rest:false, exercises:[
-        {name:"Barbell Box Squat", sets:"5 x 4"},
-        {name:"DB Single-Leg RDL", sets:"4 x 4ea"},
-        {name:"KB Front Squat", sets:"4 x 4"},
-        {name:"DB Reverse Lunge", sets:"3 x 4ea"},
-        {name:"KB Single-Arm Swing", sets:"3 x 4ea"}
-      ]},
-      { label:"Day 4", type:"Rest", rest:true, exercises:[] }
-    ]
-  },
-  4: {
-    focus: "Peak & Test - Push your working weights",
-    note: "This is your proof of work. Record every weight. Use these numbers to keep pushing intensity as the cycle repeats. Leave nothing on the table.",
-    days: [
-      { label:"Day 1", type:"Push", rest:false, exercises:[
-        {name:"Barbell Push Press", sets:"5 x 3"},
-        {name:"DB Decline Bench Press", sets:"5 x 3"},
-        {name:"DB Close-Grip Floor Press", sets:"4 x 3"},
-        {name:"KB Bottoms-Up Press", sets:"4 x 3ea"},
-        {name:"DB Tate Press", sets:"3 x 3"}
-      ]},
-      { label:"Day 2", type:"Pull", rest:false, exercises:[
-        {name:"Barbell Sumo Deadlift", sets:"5 x 3"},
-        {name:"Barbell Rack Pull", sets:"5 x 3"},
-        {name:"DB Kroc Row", sets:"4 x 3ea"},
-        {name:"KB Renegade Row", sets:"4 x 3"},
-        {name:"DB Incline Curl", sets:"3 x 3"}
-      ]},
-      { label:"Day 3", type:"Legs", rest:false, exercises:[
-        {name:"Barbell Zercher Squat", sets:"5 x 3"},
-        {name:"DB Stiff-Leg Deadlift", sets:"5 x 3"},
-        {name:"KB Single-Leg RDL", sets:"4 x 3ea"},
-        {name:"DB Deficit Reverse Lunge", sets:"4 x 3ea"},
-        {name:"KB Snatch", sets:"3 x 3ea"}
-      ]},
-      { label:"Day 4", type:"Rest", rest:true, exercises:[] }
-    ]
-  }
-};
-
-
-
-function showPanel(panel, tab) {
-  document.querySelectorAll('.fp-nav-tab').forEach(t => t.classList.remove('active'));
-  tab.classList.add('active');
-  document.getElementById('training-panel').classList.toggle('visible', panel === 'training');
-  document.getElementById('nutrition-panel').classList.toggle('visible', panel === 'nutrition');
-  
-}
-
-function showWeek(num, tab) {
-  document.querySelectorAll('.fp-tab').forEach(t => t.classList.remove('active'));
-  tab.classList.add('active');
-  const w = weeks[num];
-  document.getElementById('week-content').innerHTML = `
-    <div class="fp-week-header">
-      <span class="fp-week-badge">WEEK ${num}</span>
-      <span class="fp-week-focus">${w.focus}</span>
-    </div>
-    <div class="fp-days">
-      ${w.days.map(day => day.rest ? `
-        <div class="fp-day fp-day-rest">
-          <div class="fp-day-header">
-            <span class="fp-day-label">${day.label}</span>
-            <span class="fp-day-type">${day.type}</span>
-          </div>
-          <div class="fp-rest-content">
-            <div class="fp-rest-icon"><i class="ti ti-moon"></i></div>
-            <div class="fp-rest-text">Active Recovery</div>
-            <div class="fp-rest-sub">Then repeat Day 1</div>
-          </div>
-        </div>
-      ` : `
-        <div class="fp-day">
-          <div class="fp-day-header">
-            <span class="fp-day-label">${day.label}</span>
-            <span class="fp-day-type">${day.type}</span>
-          </div>
-          <div class="fp-exercises">
-            ${day.exercises.map(ex => `
-              <div class="fp-exercise">
-                <span class="fp-ex-name">${ex.name}</span>
-                <span class="fp-ex-sets">${ex.sets}</span>
-                <a href="${getLink(ex.name)}" class="fp-ex-link" target="_blank" rel="noopener noreferrer"
-                   title="Watch exercise video" aria-label="Video: ${ex.name}">
-                  <i class="ti ti-player-play"></i>
-                </a>
-              </div>
-            `).join('')}
-          </div>
-        </div>
-      `).join('')}
-    </div>
-    <div class="fp-coaching-note"><strong style="color:#cc2222">Coach's Note:</strong> ${w.note}</div>
-  `;
-  
-}
-
-function calcMacros() {
-  const weight   = parseFloat(document.getElementById('calc-weight').value);
-  const height   = parseFloat(document.getElementById('calc-height').value);
-  const age      = parseFloat(document.getElementById('calc-age').value);
-  const activity = parseFloat(document.getElementById('calc-activity').value);
-  const goal     = document.getElementById('calc-goal').value;
-  if (!weight || !height || !age) { alert('Please fill in all fields.'); return; }
-  const bmr  = 10 * weight + 6.25 * height - 5 * age + 5;
-  let   tdee = Math.round(bmr * activity);
-  let   kcal = goal === 'cut' ? Math.round(tdee * 0.82)
-             : goal === 'bulk' ? Math.round(tdee * 1.1)
-             : tdee;
-  const protein     = Math.round(weight * 2.2);
-  const fats        = Math.round(weight * 1.0);
-  const proteinKcal = protein * 4;
-  const fatsKcal    = fats * 9;
-  const carbsKcal   = Math.max(0, kcal - proteinKcal - fatsKcal);
-  const carbs       = Math.round(carbsKcal / 4);
-  const totalKcal   = proteinKcal + fatsKcal + carbsKcal;
-  const pPct = Math.round((proteinKcal / totalKcal) * 100);
-  const cPct = Math.round((carbsKcal   / totalKcal) * 100);
-  const fPct = Math.round((fatsKcal    / totalKcal) * 100);
-  document.getElementById('res-kcal').textContent    = kcal;
-  document.getElementById('res-protein').textContent = protein;
-  document.getElementById('res-carbs').textContent   = carbs;
-  document.getElementById('res-fats').textContent    = fats;
-  document.getElementById('macro-results').style.display = 'grid';
-  document.getElementById('macro-bars').style.display    = 'block';
-  setTimeout(() => {
-    document.getElementById('bar-protein').style.width = pPct + '%';
-    document.getElementById('bar-carbs').style.width   = cPct + '%';
-    document.getElementById('bar-fats').style.width    = fPct + '%';
-    document.getElementById('pct-protein').textContent = pPct + '%';
-    document.getElementById('pct-carbs').textContent   = cPct + '%';
-    document.getElementById('pct-fats').textContent    = fPct + '%';
-  }, 50);
-}
-
-// ── Expose functions to window for inline onclick handlers ──
-window.showPanel = showPanel;
-window.showWeek = showWeek;
-window.calcMacros = function() { calcMacros(); saveMetrics(); };
-
-// Replace the onclick on the calc button too
-document.querySelector('.fp-calc-btn').onclick = window.calcMacros;
-
-// Init week 1
-showWeek(1, document.querySelector('.fp-tab'));
-
 </script>
+
 </body>
 </html>
