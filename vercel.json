@@ -2,6 +2,7 @@
   "rewrites": [
     { "source": "/login",    "destination": "/login.html" },
     { "source": "/verified", "destination": "/verified.html" },
-    { "source": "/strength", "destination": "/strength.html" }
+    { "source": "/strength",  "destination": "/strength.html" },
+    { "source": "/endurance", "destination": "/endurance.html" }
   ]
 }

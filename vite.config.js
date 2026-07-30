@@ -9,7 +9,8 @@ export default defineConfig({
         main: 'index.html',
         login: 'login.html',
         verified: 'verified.html',
-        strength: 'strength.html'
+        strength: 'strength.html',
+        endurance: 'endurance.html'
       }
     }
   }
