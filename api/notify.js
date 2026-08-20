@@ -78,6 +78,44 @@ export default async function handler(req, res) {
     console.error('Email send failed:', err);
   }
 
+  // ── Log to Supabase members table ─────────────────────────────────────────
+  const supabaseUrl = process.env.SUPABASE_URL;
+  const supabaseKey = process.env.SUPABASE_ANON_KEY;
+
+  if (supabaseUrl && supabaseKey) {
+    try {
+      // Parse plan from m_payment_id (format: apex-monthly-timestamp or apex-sixmonths-timestamp)
+      const planSlug = (pfData.m_payment_id || '').split('-')[1] || 'unknown';
+
+      const insertRes = await fetch(`${supabaseUrl}/rest/v1/members`, {
+        method: 'POST',
+        headers: {
+          'apikey':        supabaseKey,
+          'Authorization': `Bearer ${supabaseKey}`,
+          'Content-Type':  'application/json',
+          'Prefer':        'return=minimal',
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          plan:          planSlug,
+          payfast_id:    pfData.m_payment_id || null,
+          amount_gross:  parseFloat(pfData.amount_gross) || 0,
+          status:        'active',
+        }),
+      });
+
+      if (!insertRes.ok) {
+        const errText = await insertRes.text();
+        console.error('Supabase insert error:', errText);
+      } else {
+        console.log(`Member logged to Supabase: ${email} (${planSlug})`);
+      }
+    } catch (err) {
+      console.error('Supabase insert failed:', err);
+    }
+  }
+
   // Always respond 200 to PayFast so they don't retry
   return res.status(200).end();
 }
