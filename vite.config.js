@@ -13,7 +13,9 @@ export default defineConfig({
         endurance: 'endurance.html',
         functional: 'functional.html',
         hybrid: 'hybrid.html',
-        mobility: 'mobility.html'
+        mobility: 'mobility.html',
+        funnel: 'funnel.html',
+        'thank-you': 'thank-you.html',
       }
     }
   }

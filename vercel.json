@@ -1,11 +1,14 @@
 {
   "rewrites": [
-    { "source": "/login",    "destination": "/login.html" },
-    { "source": "/verified", "destination": "/verified.html" },
+    { "source": "/login",     "destination": "/login.html" },
+    { "source": "/verified",  "destination": "/verified.html" },
     { "source": "/strength",  "destination": "/strength.html" },
-    { "source": "/endurance",  "destination": "/endurance.html" },
-    { "source": "/functional", "destination": "/functional.html" },
+    { "source": "/endurance", "destination": "/endurance.html" },
+    { "source": "/functional","destination": "/functional.html" },
     { "source": "/hybrid",    "destination": "/hybrid.html" },
-    { "source": "/mobility",  "destination": "/mobility.html" }
+    { "source": "/mobility",  "destination": "/mobility.html" },
+    { "source": "/funnel",    "destination": "/funnel.html" },
+    { "source": "/join",      "destination": "/funnel.html" },
+    { "source": "/thank-you", "destination": "/thank-you.html" }
   ]
 }

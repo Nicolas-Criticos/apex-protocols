@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0e0e0e">
+<title>Apex Protocol — Watch This First</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700;900&family=Barlow+Condensed:wght@700;900&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    background: #0e0e0e;
+    font-family: 'Barlow', sans-serif;
+    color: #e0e0e0;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    overflow-x: hidden;
+  }
+
+  /* ── Page wrapper ── */
+  .lp-wrap {
+    background: #1a1a1a;
+    width: 100%;
+    max-width: 640px;
+    margin: 0 auto;
+    min-height: 100vh;
+    box-shadow: 0 0 60px rgba(0,0,0,0.7);
+  }
+
+  /* ── Header ── */
+  .lp-header {
+    padding: 2rem 1.5rem 1.5rem;
+    text-align: center;
+    border-bottom: 1px solid #2a2a2a;
+    background: radial-gradient(circle at 50% 0%, rgba(204,34,34,0.12) 0%, rgba(0,0,0,0) 60%);
+  }
+  .lp-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #cc2222;
+    margin-bottom: 0.5rem;
+  }
+  .lp-h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: clamp(28px, 7vw, 42px);
+    line-height: 1.05;
+    letter-spacing: 1px;
+    color: #ffffff;
+  }
+  .lp-h1 span { color: #ff3b3b; }
+  .lp-sub {
+    margin-top: 0.75rem;
+    font-size: 15px;
+    color: #a8a8a8;
+    max-width: 440px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ── Video ── */
+  .lp-video-section { padding: 1.5rem 1.5rem 1rem; }
+  .lp-video-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    border: 1px solid #2a2a2a;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+  }
+  .lp-video-frame video {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+  }
+  .lp-video-caption {
+    text-align: center;
+    font-size: 13px;
+    color: #888;
+    margin-top: 0.75rem;
+    letter-spacing: 0.3px;
+  }
+
+  /* ── Divider ── */
+  .lp-divider { width: 60px; height: 2px; background: #cc2222; margin: 1.75rem auto; }
+
+  /* ── Offer heading ── */
+  .lp-offer-heading { text-align: center; padding: 0 1.5rem; }
+  .lp-offer-heading h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: clamp(22px, 5.5vw, 30px);
+    color: #fff;
+    letter-spacing: 1px;
+  }
+  .lp-offer-heading p { margin-top: 0.5rem; font-size: 14px; color: #999; }
+
+  /* ── Pricing cards ── */
+  .lp-plans {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    padding: 1.5rem 1.5rem 0.5rem;
+  }
+  @media (max-width: 420px) { .lp-plans { grid-template-columns: 1fr; } }
+
+  .lp-plan {
+    background: #141414;
+    border: 1px solid #2a2a2a;
+    border-radius: 8px;
+    padding: 1.25rem 1rem;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    position: relative;
+  }
+  .lp-plan.featured {
+    border-color: #cc2222;
+    box-shadow: 0 0 24px rgba(204,34,34,0.15);
+  }
+  .lp-badge {
+    position: absolute;
+    top: -11px; left: 50%;
+    transform: translateX(-50%);
+    background: #cc2222;
+    color: #fff;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 3px;
+  }
+  .lp-plan-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 14px;
+    color: #ff3b3b;
+    margin-top: 0.25rem;
+  }
+  .lp-plan-price {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(26px, 6vw, 34px);
+    color: #fff;
+    margin-top: 0.4rem;
+    line-height: 1;
+  }
+  .lp-plan-price span {
+    font-size: 13px;
+    font-weight: 600;
+    color: #999;
+    font-family: 'Barlow', sans-serif;
+  }
+  .lp-plan-note { font-size: 12px; color: #888; margin-top: 0.4rem; min-height: 32px; }
+
+  /* CTA buttons — now real buttons not links */
+  .lp-plan-cta {
+    margin-top: 1rem;
+    display: block;
+    width: 100%;
+    background: #cc2222;
+    color: #fff;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 14px;
+    padding: 0.7rem 0.5rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+  .lp-plan-cta:hover:not(:disabled) { background: #a81c1c; }
+  .lp-plan-cta:disabled { opacity: 0.5; cursor: not-allowed; }
+  .lp-plan.secondary .lp-plan-cta {
+    background: transparent;
+    border: 1px solid #cc2222;
+    color: #ff3b3b;
+  }
+  .lp-plan.secondary .lp-plan-cta:hover:not(:disabled) { background: rgba(204,34,34,0.1); }
+
+  .lp-save-note { text-align: center; font-size: 12px; color: #6bbf6b; margin-top: 0.75rem; }
+
+  /* ── Trust row ── */
+  .lp-trust {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 2rem 1.5rem 1rem;
+    flex-wrap: wrap;
+  }
+  .lp-trust-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: #888; }
+  .lp-trust-item i { color: #cc2222; font-size: 16px; }
+
+  /* ── Footer ── */
+  .lp-footer {
+    padding: 1.5rem;
+    text-align: center;
+    border-top: 1px solid #2a2a2a;
+    margin-top: 1.5rem;
+  }
+  .lp-footer p { font-size: 11px; color: #555; line-height: 1.6; }
+  .lp-footer .lp-brand {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #666;
+    font-size: 13px;
+    margin-bottom: 0.5rem;
+  }
+
+  /* ── Modal overlay ── */
+  .modal-overlay {
+    display: none; /* shown via JS */
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+  .modal-overlay.open { display: flex; }
+
+  .modal-box {
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    padding: 2rem 1.5rem;
+    position: relative;
+  }
+  .modal-close {
+    position: absolute;
+    top: 1rem; right: 1rem;
+    background: none;
+    border: none;
+    color: #666;
+    font-size: 22px;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+  }
+  .modal-close:hover { color: #aaa; }
+
+  .modal-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #cc2222;
+    margin-bottom: 0.5rem;
+  }
+  .modal-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 22px;
+    text-transform: uppercase;
+    color: #fff;
+    letter-spacing: 0.5px;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+  }
+
+  .modal-field { margin-bottom: 1rem; }
+  .modal-field label { display: block; font-size: 12px; color: #888; margin-bottom: 5px; letter-spacing: 0.3px; }
+  .modal-field input {
+    width: 100%;
+    background: #141414;
+    border: 1px solid #333;
+    border-radius: 5px;
+    padding: 0.7rem 0.85rem;
+    font-size: 15px;
+    color: #e0e0e0;
+    font-family: 'Barlow', sans-serif;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+  .modal-field input:focus { border-color: #cc2222; }
+  .modal-field input::placeholder { color: #555; }
+
+  .modal-submit {
+    width: 100%;
+    margin-top: 1.25rem;
+    background: #cc2222;
+    color: #fff;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 16px;
+    padding: 0.85rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .modal-submit:hover:not(:disabled) { background: #a81c1c; }
+  .modal-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+
+  .modal-error { margin-top: 0.75rem; font-size: 13px; color: #ff6b6b; text-align: center; min-height: 18px; }
+  .modal-disclaimer { margin-top: 1rem; font-size: 11px; color: #555; text-align: center; line-height: 1.5; }
+</style>
+</head>
+<body>
+
+<!-- ═══ PAYMENT MODAL ═══════════════════════════════════════════════════════ -->
+<div id="payment-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">✕</button>
+
+    <p class="modal-eyebrow">Apex Protocol</p>
+    <h2 class="modal-title" id="modal-title">Start Your Journey</h2>
+
+    <form id="payment-form" onsubmit="submitPayment(event)" novalidate>
+      <div class="modal-field">
+        <label for="modal-name">Your name</label>
+        <input type="text" id="modal-name" name="name" placeholder="e.g. Jamie Malan" autocomplete="name" required>
+      </div>
+      <div class="modal-field">
+        <label for="modal-email">Email address</label>
+        <input type="email" id="modal-email" name="email" placeholder="you@example.com" autocomplete="email" required>
+      </div>
+      <button type="submit" class="modal-submit" id="modal-submit">Continue to Payment</button>
+      <p class="modal-error" id="modal-error"></p>
+      <p class="modal-disclaimer">Secure checkout powered by PayFast. We'll email your program access link once payment is confirmed.</p>
+    </form>
+  </div>
+</div>
+
+<!-- ═══ LANDING PAGE ════════════════════════════════════════════════════════ -->
+<div class="lp-wrap">
+
+  <!-- Header -->
+  <header class="lp-header">
+    <div class="lp-eyebrow">Apex Protocol</div>
+    <h1 class="lp-h1">Before You Join, <span>Watch This</span></h1>
+    <p class="lp-sub">A quick word from us on how the program works and what to expect once you're in.</p>
+  </header>
+
+  <!-- VSL Video -->
+  <section class="lp-video-section">
+    <div class="lp-video-frame">
+      <video controls playsinline preload="metadata" poster="/vsl-poster.jpg">
+        <source src="/vsl-apex.mp4" type="video/mp4">
+        Your browser doesn't support embedded video. <a href="/vsl-apex.mp4" style="color:#cc2222;">Watch it here</a>.
+      </video>
+    </div>
+    <p class="lp-video-caption">🔊 Make sure your sound is on</p>
+  </section>
+
+  <div class="lp-divider"></div>
+
+  <!-- Offer heading -->
+  <section class="lp-offer-heading">
+    <h2>Choose Your Start Date</h2>
+    <p>Lock in your spot below. Both options get you full access from day one.</p>
+  </section>
+
+  <!-- Pricing plans -->
+  <section class="lp-plans">
+
+    <div class="lp-plan secondary">
+      <div class="lp-plan-name">Monthly</div>
+      <div class="lp-plan-price">R1,099<span>/pm</span></div>
+      <div class="lp-plan-note">Billed every month. Cancel any time.</div>
+      <button class="lp-plan-cta" onclick="openModal('monthly')">Start Monthly</button>
+    </div>
+
+    <div class="lp-plan featured">
+      <div class="lp-badge">Best Value</div>
+      <div class="lp-plan-name">6 Months</div>
+      <div class="lp-plan-price">R5,500<span> once-off</span></div>
+      <div class="lp-plan-note">Paid upfront. Works out to ~R917/pm.</div>
+      <button class="lp-plan-cta" onclick="openModal('sixmonths')">Start 6 Months</button>
+    </div>
+
+  </section>
+
+  <p class="lp-save-note">Paying upfront saves you roughly R1,094 over 6 months</p>
+
+  <!-- Trust row -->
+  <div class="lp-trust">
+    <div class="lp-trust-item"><i class="ti ti-lock"></i> Secure checkout</div>
+    <div class="lp-trust-item"><i class="ti ti-shield-check"></i> Cancel any time</div>
+    <div class="lp-trust-item"><i class="ti ti-mail"></i> Instant access</div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="lp-footer">
+    <div class="lp-brand">Apex Protocol</div>
+    <p>By continuing you agree to the program terms.<br>This page is part of the Apex Protocol partnership offering.</p>
+  </footer>
+
+</div><!-- /.lp-wrap -->
+
+<!-- ═══ PAYFAST JAVASCRIPT ═════════════════════════════════════════════════ -->
+<script>
+  /** Currently selected plan: 'monthly' or 'sixmonths' */
+  let selectedPlan = null;
+
+  /**
+   * openModal — called when user clicks a plan button.
+   * Sets the selected plan and updates the modal title before showing it.
+   */
+  function openModal(plan) {
+    selectedPlan = plan;
+    const titles = {
+      monthly:   'Monthly — R1,099/pm',
+      sixmonths: '6 Months — R5,500 once-off',
+    };
+    document.getElementById('modal-title').textContent = titles[plan] || 'Join Apex Protocol';
+    document.getElementById('modal-error').textContent = '';
+    document.getElementById('modal-submit').textContent = 'Continue to Payment';
+    document.getElementById('modal-submit').disabled = false;
+    document.getElementById('payment-modal').classList.add('open');
+    // Focus the name field for UX
+    setTimeout(() => document.getElementById('modal-name').focus(), 50);
+  }
+
+  /**
+   * closeModal — hides the payment modal.
+   */
+  function closeModal() {
+    document.getElementById('payment-modal').classList.remove('open');
+  }
+
+  // Close modal on overlay click (but not on box click)
+  document.getElementById('payment-modal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+
+  // Close modal on Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  /**
+   * submitPayment — handles the modal form submission.
+   * 1. Collects name + email.
+   * 2. POSTs to /api/create-payment to get a signed PayFast payload.
+   * 3. Auto-submits a hidden form to PayFast's checkout page.
+   */
+  async function submitPayment(event) {
+    event.preventDefault();
+
+    const name  = document.getElementById('modal-name').value.trim();
+    const email = document.getElementById('modal-email').value.trim();
+    const btn   = document.getElementById('modal-submit');
+    const errEl = document.getElementById('modal-error');
+
+    // Basic validation
+    if (!name) { errEl.textContent = 'Please enter your name.'; return; }
+    if (!email || !email.includes('@')) { errEl.textContent = 'Please enter a valid email address.'; return; }
+    if (!selectedPlan) { errEl.textContent = 'No plan selected. Please close and try again.'; return; }
+
+    // Lock UI
+    btn.textContent = 'Redirecting to payment…';
+    btn.disabled    = true;
+    errEl.textContent = '';
+
+    try {
+      // Call our server-side payment initiation endpoint
+      const res = await fetch('/api/create-payment', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify({ plan: selectedPlan, name, email }),
+      });
+
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.error || `Server error ${res.status}`);
+      }
+
+      const { payfast_url, fields } = await res.json();
+
+      // Build a hidden form and auto-submit it to PayFast
+      const form = document.createElement('form');
+      form.method = 'POST';
+      form.action = payfast_url;
+      form.style.display = 'none';
+
+      for (const [key, value] of Object.entries(fields)) {
+        const input = document.createElement('input');
+        input.type  = 'hidden';
+        input.name  = key;
+        input.value = value;
+        form.appendChild(input);
+      }
+
+      document.body.appendChild(form);
+      form.submit(); // → redirects to PayFast checkout
+
+    } catch (err) {
+      console.error('Payment initiation failed:', err);
+      btn.textContent = 'Continue to Payment';
+      btn.disabled    = false;
+      errEl.textContent = 'Something went wrong. Please try again or contact us.';
+    }
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0e0e0e">
+<title>Payment Confirmed — Apex Protocol</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700;900&family=Barlow+Condensed:wght@700;900&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    background: #0e0e0e;
+    font-family: 'Barlow', sans-serif;
+    color: #e0e0e0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+  }
+
+  .ty-wrap {
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 12px;
+    max-width: 480px;
+    width: 100%;
+    padding: 3rem 2rem;
+    text-align: center;
+    box-shadow: 0 0 60px rgba(0,0,0,0.6);
+  }
+
+  /* Checkmark icon */
+  .ty-check {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: rgba(107, 191, 107, 0.12);
+    border: 2px solid rgba(107, 191, 107, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 32px;
+    color: #6bbf6b;
+  }
+
+  .ty-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #cc2222;
+    margin-bottom: 0.75rem;
+  }
+
+  .ty-heading {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(28px, 6vw, 36px);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 1.25rem;
+  }
+
+  .ty-body {
+    font-size: 15px;
+    color: #a8a8a8;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  .ty-email-box {
+    background: #141414;
+    border: 1px solid #2a2a2a;
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .ty-email-box i {
+    font-size: 24px;
+    color: #cc2222;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  .ty-email-box p {
+    font-size: 13px;
+    color: #999;
+    line-height: 1.6;
+  }
+  .ty-email-box strong { color: #e0e0e0; }
+
+  .ty-divider {
+    width: 40px;
+    height: 2px;
+    background: #cc2222;
+    margin: 0 auto 1.5rem;
+  }
+
+  .ty-footer {
+    font-size: 12px;
+    color: #555;
+    line-height: 1.6;
+  }
+  .ty-brand {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #444;
+    font-size: 13px;
+    margin-bottom: 0.5rem;
+  }
+</style>
+</head>
+<body>
+
+<div class="ty-wrap">
+
+  <!-- Success icon -->
+  <div class="ty-check">
+    <i class="ti ti-check"></i>
+  </div>
+
+  <p class="ty-eyebrow">Payment confirmed</p>
+  <h1 class="ty-heading">You're In.<br>Welcome.</h1>
+
+  <p class="ty-body">
+    Your payment went through. You've just made a real decision — and that matters.
+  </p>
+
+  <!-- Email notice -->
+  <div class="ty-email-box">
+    <i class="ti ti-mail"></i>
+    <p>
+      <strong>Check your inbox.</strong><br>
+      We've sent your program access link to the email you provided. It may take a minute or two to arrive. Check your spam folder if you don't see it.
+    </p>
+  </div>
+
+  <div class="ty-divider"></div>
+
+  <div class="ty-brand">Apex Protocol</div>
+  <p class="ty-footer">
+    Questions? Contact us and we'll sort you out fast.
+  </p>
+
+</div>
+
+</body>
+</html>
